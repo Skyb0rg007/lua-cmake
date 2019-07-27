@@ -97,6 +97,8 @@ else()
     target_compile_features(liblua PUBLIC c_std_90)
 endif()
 
+add_library(lua::liblua ALIAS liblua)
+
 # Installation
 install(TARGETS liblua EXPORT lua-export
     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT Development
