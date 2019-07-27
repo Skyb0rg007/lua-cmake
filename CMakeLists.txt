@@ -83,7 +83,10 @@ if(NOT dont_need_libm)
 endif()
 
 # OS dependent options
-if(APPLE)
+if(EMSCRIPTEN)
+    target_compile_definitions(liblua PUBLIC LUA_USE_C89)
+    target_compile_features(liblua PUBLIC c_std_90)
+elseif(APPLE)
     target_compile_definitions(liblua PUBLIC LUA_USE_MACOSX)
     target_compile_features(liblua PUBLIC c_std_99)
 elseif(UNIX)
